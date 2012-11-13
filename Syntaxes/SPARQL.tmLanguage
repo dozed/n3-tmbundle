@@ -444,8 +444,6 @@
 					<key>name</key>
 					<string>constant</string>
 				</dict>
-				<key>2</key>
-				<dict/>
 				<key>3</key>
 				<dict>
 					<key>name</key>
@@ -469,8 +467,6 @@
 					<key>name</key>
 					<string>constant</string>
 				</dict>
-				<key>3</key>
-				<dict/>
 				<key>4</key>
 				<dict>
 					<key>name</key>
