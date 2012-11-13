@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>$1:$2 a owl:DatatypeProperty;
+	rdfs:domain "$3";
+  rdfs:range "$4".</string>
+	<key>name</key>
+	<string>rdfs:Datatype</string>
+	<key>scope</key>
+	<string>source.n3</string>
+	<key>tabTrigger</key>
+	<string>dataproperty</string>
+	<key>uuid</key>
+	<string>122CE90D-EAFE-4EA7-BE64-F24030A5E021</string>
+</dict>
+</plist>
