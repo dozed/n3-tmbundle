@@ -15,7 +15,7 @@
 	<key>keyEquivalent</key>
 	<string>^~N</string>
 	<key>name</key>
-	<string>n3</string>
+	<string>N3</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -235,8 +235,6 @@
 					<key>name</key>
 					<string>constant</string>
 				</dict>
-				<key>2</key>
-				<dict/>
 			</dict>
 			<key>name</key>
 			<string>meta.statement.object.literal.n3</string>
