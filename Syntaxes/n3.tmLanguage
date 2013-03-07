@@ -6,7 +6,7 @@
 	<array>
 		<string>n3</string>
 		<string>ttl</string>
-		<string>NT</string>
+		<string>nt</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>^([a-zA-Z0-9\:\-_]+|\[\]|&lt;[^ \&gt;]*&gt;)</string>
@@ -18,12 +18,6 @@
 	<string>N3</string>
 	<key>patterns</key>
 	<array>
-		<dict>
-			<key>match</key>
-			<string>\b(a|this)\b</string>
-			<key>name</key>
-			<string>keyword</string>
-		</dict>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -44,7 +38,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^(\@prefix )(.*?:)\s+(&lt;[^ \&gt;]*&gt;)\s*.</string>
+			<string>^(\@(?:prefix|base|keywords))(\s+.*?)?\s+(&lt;[^ \&gt;]*&gt;)\s*.</string>
 			<key>name</key>
 			<string>meta.preprocessor.prefix.n3</string>
 		</dict>
@@ -64,7 +58,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>([a-zA-Z0-9\:\-_]+|\[\]|&lt;[^ \&gt;]*&gt;)\s*</string>
+			<string>([a-zA-Z0-9\:\-_]+|\[\s*\]|&lt;[^ \&gt;]*&gt;)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -75,6 +69,41 @@
 			</dict>
 			<key>end</key>
 			<string>\.</string>
+			<key>name</key>
+			<string>meta.statement.n3</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#PredObjM</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(\[[^\]])\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.statement.subject.n3</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?&lt;=[^\[])(])</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>meta.statement.subject.n3</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.statement.n3</string>
 			<key>patterns</key>
@@ -160,6 +189,26 @@
 				</dict>
 			</array>
 		</dict>
+     <key>numberliteral</key>
+     <dict>
+       <key>captures</key>
+       <dict>
+         <key>1</key>
+         <dict>
+           <key>name</key>
+           <string>meta.statement.object.literal.n3</string>
+         </dict>
+         <key>2</key>
+         <dict>
+           <key>name</key>
+           <string>constant</string>
+         </dict>
+       </dict>
+       <key>match</key>
+       <string>([+-]?[0-9\.]+(?:e[+-]?[0-9]+)?)</string>
+       <key>name</key>
+       <string>meta.statement.object.literal.n3</string>
+     </dict>
 		<key>comment</key>
 		<dict>
 			<key>captures</key>
@@ -203,6 +252,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#numberliteral</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#anonObj</string>
 				</dict>
 				<dict>
@@ -227,7 +280,7 @@
 			<key>begin</key>
 			<string>"""</string>
 			<key>end</key>
-			<string>[^\\]"""(\^\^([a-zA-z\-\:_]+|&lt;.*?&gt;)|@[a-z]+)?\s*</string>
+			<string>(?:[^\\]|^)"""(\^\^([a-zA-z\-\:_]+|&lt;.*?&gt;)|@[a-z]+)?\s*</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -235,6 +288,8 @@
 					<key>name</key>
 					<string>constant</string>
 				</dict>
+         <key>2</key>
+         <dict/>
 			</dict>
 			<key>name</key>
 			<string>meta.statement.object.literal.n3</string>
@@ -255,14 +310,14 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(".*?[^\\]")(\^\^(?:[a-zA-z\-\:_]+|&lt;.*?&gt;)|@[a-z]+)?\s*</string>
+			<string>(".*?[^\\]"|"")(\^\^(?:[a-zA-z\-\:_]+|&lt;.*?&gt;)|(?:@[a-z-]+))\s*</string>
 			<key>name</key>
 			<string>meta.statement.object.literal.n3</string>
 		</dict>
 		<key>uri</key>
 		<dict>
 			<key>match</key>
-			<string>&lt;(([a-zA-Z][0-9a-zA-Z]*:)?/{0,2}[0-9a-zA-Z;/?:@&amp;=,+$\.\-_!~*()%]+)?(\#[0-9a-zA-Z;/?:@&amp;=+$\.\-_!~*%]+)?&gt;</string>
+			<string>&lt;(([a-zA-Z][0-9a-zA-Z]*:)?/{0,2}[0-9a-zA-Z;/?:@&amp;=,+$\.\-_!~*()%]+)?(\#[0-9a-zA-Z;/?:@&amp;=+$\.\-_!~*%]*)?&gt;</string>
 			<key>name</key>
 			<string>meta.tag</string>
 		</dict>
