@@ -86,7 +86,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((?i:SELECT(?i:\s*DISTINCT)?))\s*((?:\s*?(?:\?|\$)[a-zA-z0-9_]+)+|(?:\*))\s+(\#.*$\n?)?(.*)?</string>
+			<string>^\s*((?i:SELECT(?i:\s*DISTINCT)?))\s*((?:\s*?(?:\?|\$)[a-zA-z0-9_]+)(?:,\s*?(?:\?|\$)[a-zA-z0-9_]+)*|(?:\*))\s+(\#.*$\n?)?(.*)?</string>
 			<key>name</key>
 			<string>keyword.select</string>
 		</dict>
