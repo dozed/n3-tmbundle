@@ -51,7 +51,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((?i:PREFIX))\s+([a-zA-Z0-9]*:)+\s+(&lt;[^ \&gt;]*&gt;)</string>
+			<string>^\s*((?i:PREFIX))\s+([a-zA-Z0-9\-]*:)+\s+(&lt;[^ \&gt;]*&gt;)</string>
 			<key>name</key>
 			<string>meta.preprocessor.prefix.n3</string>
 		</dict>
