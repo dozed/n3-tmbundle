@@ -86,7 +86,10 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((?i:SELECT(?i:\s*DISTINCT)?))\s*((?:\s*?(?:\?|\$)[a-zA-z0-9_]+)(?:,\s*?(?:\?|\$)[a-zA-z0-9_]+)*|(?:\*))\s+(\#.*$\n?)?(.*)?</string>
+
+			<string>^\s*((?i:SELECT(?i:\s*DISTINCT)?))\s*((?:\s*?(?:\?|\$)[a-zA-z0-9_]+)+|(?:\*))\s*{?\s*(\#.*$\n?)?(.*)?</string>
+			<!-- <string>^\s*((?i:SELECT(?i:\s*DISTINCT)?))\s*((?:\s*?(?:\?|\$)[a-zA-z0-9_]+)(?:,\s*?(?:\?|\$)[a-zA-z0-9_]+)*|(?:\*))\s+(\#.*$\n?)?(.*)?</string> -->
+
 			<key>name</key>
 			<string>keyword.select</string>
 		</dict>
@@ -169,7 +172,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((?i:LIMIT|OFFSET))\s+([0-9]+)?\s*(#.*)?(.*)$</string>
+			<string>^\s*\}?\s*((?i:LIMIT|OFFSET))\s+([0-9]+)?\s*(#.*)?(.*)$</string>
 			<key>name</key>
 			<string>solutionModifier</string>
 		</dict>
